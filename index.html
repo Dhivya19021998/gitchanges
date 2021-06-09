@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Form</title>
+        <title>First</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script type="text/javascript">
@@ -56,7 +56,7 @@
     </head>
 
     <body>
-        <div class="wrapper">
+        <div class="wrapper"><title>First</title>
             <h2>Welcome</h2>
             <div id="error">
             </div>
@@ -65,9 +65,12 @@
     <input type="text" id="name" placeholder="Name"><br><br>
     <input type="text" id="email" placeholder="Email"><br><br>
     <input type="text" id="telphone" placeholder="Mobile" pattern="[0-9]{10}" maxlength="10"><br><br>
-    <p>Please select your DOB:</p><br>
-    <!--<select id="month">
-        <option value="Month">Month</option>
+    <h4>Please select your DOB:</h4><br>
+    <label class="month-field">Month*</label>
+    <label class="day-field" style="padding-left: 35px;">Day*</label>
+    <label class="year-field" style="padding-left: 5px;">Year*</label><br>
+    <select id="month">
+        <option value selected="selected" disabled=""></option>
         <option value="January">January</option>
         <option value="February">February</option>
         <option value="March">March</option>
@@ -82,27 +85,54 @@
         <option value="December">December</option>
     </select>
     <select id="day">
-        <option value="Day">Day</option>
+        <option value selected="selected" disabled="">
         <option value="1">1</option>
         <option value="2">2</option>
-        <option value="3">4</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
         <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
     </select>
     <select id="year">
-        <option value="Year">Year</option>
+        <option value selected="selected" disabled="">
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
         <option value="2018">2018</option>
         <option value="2019">2019</option>
         <option value="2020">2020</option>
         <option value="2021">2021</option>
-    </select>-->
-    <SELECT id ="year" name = "yyyy" onchange="change_year(this)">
-    </SELECT>
-    <SELECT  id ="month" name = "mm" onchange="change_month(this)">
-    </SELECT>
-    <SELECT id ="day" name = "dd" >
-    </SELECT>
+    </select>
     <br><br>
-    <p>Please select your gender:</p><br>
+    <h4>Please select your gender:</h4></p><br>
     <input type="radio" id="male" name="gender" value="male">Male<br><br>
     <input type="radio" id="female" name="gender" value="female">Female<br><br>
     <input type="radio" id="other" name="gender" value="other">Other<br><br>
@@ -110,100 +140,5 @@
  
 </div>
 </form>
-
-    </body>
-    <script>
-        var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
-$(document).ready(function(){
-    var option = '<option value="day">day</option>';
-    var selectedDay="day";
-    for (var i=1;i <= Days[0];i++){ //add option days
-        option += '<option value="'+ i + '">' + i + '</option>';
-    }
-    $('#day').append(option);
-    $('#day').val(selectedDay);
-
-    var option = '<option value="month">month</option>';
-    var selectedMon ="month";
-    for (var i=1;i <= 12;i++){
-        option += '<option value="'+ i + '">' + i + '</option>';
-    }
-    $('#month').append(option);
-    $('#month').val(selectedMon);
-
-    var option = '<option value="month">month</option>';
-    var selectedMon ="month";
-    for (var i=1;i <= 12;i++){
-        option += '<option value="'+ i + '">' + i + '</option>';
-    }
-    $('#month2').append(option);
-    $('#month2').val(selectedMon);
-  
-    var d = new Date();
-    var option = '<option value="year">year</option>';
-    selectedYear ="year";
-    for (var i=1930;i <= d.getFullYear();i++){// years start i
-        option += '<option value="'+ i + '">' + i + '</option>';
-    }
-    $('#year').append(option);
-    $('#year').val(selectedYear);
-});
-function isLeapYear(year) {
-    year = parseInt(year);
-    if (year % 4 != 0) {
-	      return false;
-	  } else if (year % 400 == 0) {
-	      return true;
-	  } else if (year % 100 == 0) {
-	      return false;
-	  } else {
-	      return true;
-	  }
-}
-
-function change_year(select)
-{
-    if( isLeapYear( $(select).val() ) )
-	  {
-		    Days[1] = 29;
-		    
-    }
-    else {
-        Days[1] = 28;
-    }
-    if( $("#month").val() == 2)
-		    {
-			       var day = $('#day');
-			       var val = $(day).val();
-			       $(day).empty();
-			       var option = '<option value="day">day</option>';
-			       for (var i=1;i <= Days[1];i++){ //add option days
-				         option += '<option value="'+ i + '">' + i + '</option>';
-             }
-			       $(day).append(option);
-			       if( val > Days[ month ] )
-			       {
-				          val = 1;
-			       }
-			       $(day).val(val);
-		     }
-  }
-
-function change_month(select) {
-    var day = $('#day');
-    var val = $(day).val();
-    $(day).empty();
-    var option = '<option value="day">day</option>';
-    var month = parseInt( $(select).val() ) - 1;
-    for (var i=1;i <= Days[ month ];i++){ //add option days
-        option += '<option value="'+ i + '">' + i + '</option>';
-    }
-    $(day).append(option);
-    if( val > Days[ month ] )
-    {
-        val = 1;
-    }
-    $(day).val(val);
-}
-    </script>
+    </body> 
 </html>
