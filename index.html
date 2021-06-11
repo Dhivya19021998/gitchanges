@@ -4,6 +4,10 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script type="text/javascript">
+         window.onload = function(){
+                var querystring = "first";
+                var urlparams = new URLSearchParams(querystring);
+         }
         function validate(){
           
           var name = document.getElementById("name").value;
